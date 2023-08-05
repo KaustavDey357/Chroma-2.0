@@ -9,7 +9,7 @@ recognizer = sr.Recognizer()
 recognizer.energy_threshold = 300
 mic = sr.Microphone()
 r = 2
-q = 0
+q = 1
 o = "How can I help you today?"
 print("Hello I'm Chroma2.1, nice to meet you")
 playsound("welcome.mp3")
@@ -17,7 +17,6 @@ playsound("welcome.mp3")
 while r > 0:
     with mic as source:
 
-        q += 1
         recognizer.adjust_for_ambient_noise(source)
         print(o)
         playsound("welcomez.mp3") if q > 1 else playsound("welcomer.mp3")
@@ -71,12 +70,21 @@ while r > 0:
         t1 = gTTS(s)
         t1.save("welcomet.mp3")
         playsound("welcomet.mp3")
+        q +=1
 
     except sr.UnknownValueError:
-        print("Could not understand")
+        print("Sorry I cannot understand, please repeat again")
+        s = "Sorry I cannot understand, please repeat again"
+        t1 = gTTS(s)
+        t1.save("welcomet.mp3")
+        playsound("welcomet.mp3")
 
     except sr.RequestError:
         print("Speech service down\n")
+        s = "Speech service down"
+        t1 = gTTS(s)
+        t1.save("welcomet.mp3")
+        playsound("welcomet.mp3")
 # Import the required module for text
 # to speech conversion
 
