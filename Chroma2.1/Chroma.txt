@@ -1,0 +1,3 @@
+so this project is to make an automated redpondse generating program.
+It will take input and give an output 
+Topic will be India through the ages
